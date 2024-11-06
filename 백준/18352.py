@@ -36,3 +36,38 @@ for i in range(1, n + 1):
         ans += 1
 if ans == 0:
     print(-1)
+
+
+# 11/06
+import sys
+from collections import deque
+
+input = sys.stdin.readline
+
+N, M, K, X = map(int, input().split())
+board = [[] for _ in range(N + 1)]
+dis = [1e9] * (N + 1)
+dis[X] = 0
+
+for _ in range(M):
+    a, b = map(int, input().split())
+    board[a].append(b)
+
+q = deque([X])
+while q:
+    node = q.popleft()
+    for next_node in board[node]:
+        if dis[next_node] == 1e9:
+            dis[next_node] = dis[node] + 1
+            q.append(next_node)
+
+ans = []
+for i in range(len(dis)):
+    if dis[i] == K:
+        ans.append(i)
+
+if not len(ans):
+    print(-1)
+else:
+    for i in ans:
+        print(i, end=" ")
