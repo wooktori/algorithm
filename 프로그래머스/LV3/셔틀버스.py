@@ -2,7 +2,6 @@ from collections import deque
 
 
 def solution(n, t, m, timetable):
-    answer = ""
     startTime = 540
     lastTime = 0
     lastCount = 0
@@ -32,4 +31,3 @@ def solution(n, t, m, timetable):
         return change(lastTime - 1)
     else:
         return change(startTime - t)
-    return answer
