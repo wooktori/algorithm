@@ -1,3 +1,7 @@
+// 여러 지점에서 동시에 시작해야하는 BFS 문제
+// visited 배열을 사용하지 않아도 해결이 가능하다는 점.
+// shift() 연산은 O(N)의 시간복잡도이기 때문에 포인터를 이용해 풀어주면 O(1)의 시간복잡도로 해결할 수 있다.
+
 const input = require("fs")
   .readFileSync(process.platform === "linux" ? "/dev/stdin" : "test.txt")
   .toString()
@@ -10,6 +14,8 @@ for (let i = 1; i <= n; i++) {
   board.push(input[i].split(" ").map(Number));
 }
 
+// ***시간초과 풀이***
+// 매 루프마다 전체 배열을 순회하는 부분에서 많은 시간 소요.
 // let day = 0;
 // const dx = [-1, 1, 0, 0];
 // const dy = [0, 0, -1, 1];
