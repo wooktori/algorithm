@@ -65,7 +65,7 @@ while (flag < queue.length) {
       process.exit();
     }
     if (board[nx][ny] !== ".") continue;
-    // 불과 사람이 동시에 같은 칸에 도착한 경우에는 사람이 먼저로 판단.
+    // 불과 사람이 동시에 같은 칸에 도달 불가.
     if (time + 1 < fire[nx][ny]) {
       queue.push([nx, ny, time + 1]);
       board[nx][ny] = "J";
