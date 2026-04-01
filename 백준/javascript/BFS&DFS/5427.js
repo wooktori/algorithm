@@ -36,6 +36,7 @@ for (let t = 0; t < T; t++) {
     }
   }
 
+  // 불이 몇초 뒤에 도착하는지에 대한 불 보드 생성.
   while (fireQ.length > head) {
     const [x, y, time] = fireQ[head++];
 
@@ -48,6 +49,8 @@ for (let t = 0; t < T; t++) {
       fireQ.push([nx, ny, time + 1]);
     }
   }
+
+  // 만들어 놓은 불 보드와 비교를 통해 탈출 여부 판단.
   const queue = [[startX, startY, 0]];
   let qHead = 0;
   board[startX][startY] = "#"; // 방문 처리
@@ -60,6 +63,7 @@ for (let t = 0; t < T; t++) {
       const nx = x + dx[i];
       const ny = y + dy[i];
 
+      // 탈출 성공한 경우
       if (nx < 0 || ny < 0 || nx >= h || ny >= w) {
         console.log(time + 1);
         escaped = true;
